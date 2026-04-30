@@ -30,6 +30,5 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'tp-devsecops-pipeline:ci'
-          format: 'sarif'  # Better for CI/CD integration
-          output: 'trivy-results.sarif'
+          format: 'table'
           exit-code: '1'
