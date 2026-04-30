@@ -44,7 +44,7 @@ jobs:
         run: docker build --pull -t tp-devsecops-pipeline:ci .
 
       - name: Trivy filesystem scan
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.35.0
         with:
           scan-type: 'fs'
           scan-ref: '.'
@@ -54,7 +54,7 @@ jobs:
           exit-code: '1'
 
       - name: Trivy container scan
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.35.0
         with:
           image-ref: 'tp-devsecops-pipeline:ci'
           format: 'table'
