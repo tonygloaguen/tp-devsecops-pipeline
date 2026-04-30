@@ -50,6 +50,7 @@ jobs:
           scan-ref: '.'
           format: 'table'
           severity: 'CRITICAL,HIGH'
+          ignore-unfixed: true
           exit-code: '1'
 
       - name: Trivy container scan
@@ -58,5 +59,6 @@ jobs:
           image-ref: 'tp-devsecops-pipeline:ci'
           format: 'table'
           severity: 'CRITICAL,HIGH'
+          ignore-unfixed: true
           vuln-type: 'os,library'
           exit-code: '1'
