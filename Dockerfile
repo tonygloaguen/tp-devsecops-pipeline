@@ -3,7 +3,7 @@
 ARG PYTHON_VERSION=3.12.13
 
 # Builder stage: build wheels with build dependencies
-FROM python:${PYTHON_VERSION}-slim-bookworm AS builder
+FROM python:${PYTHON_VERSION}-slim-trixie AS builder
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -25,7 +25,7 @@ RUN python -m pip install --upgrade pip setuptools wheel \
 
 
 # Final runtime image
-FROM python:${PYTHON_VERSION}-slim-bookworm AS runtime
+FROM python:${PYTHON_VERSION}-slim-trixie AS runtime
 
 ARG DEBIAN_FRONTEND=noninteractive
 
