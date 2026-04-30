@@ -53,7 +53,7 @@ jobs:
           exit-code: '1'
 
       - name: Trivy container scan
-        uses: aquasecurity/trivy-action@0.34.1
+        uses: aquasecurity/trivy-action@0.35.0
         with:
           image-ref: 'tp-devsecops-pipeline:ci'
           format: 'table'
