@@ -28,7 +28,7 @@ jobs:
         run: docker build -t tp-devsecops-pipeline:ci .
       - name: Trivy container scan
         uses: aquasecurity/trivy-action@master
-       with:
+        with:
           image-ref: 'tp-devsecops-pipeline:ci'
           format: 'table'
           severity: 'CRITICAL,HIGH'
