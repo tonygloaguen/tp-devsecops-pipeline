@@ -1,5 +1,5 @@
 # Builder stage: build wheels with build dependencies
-FROM python:3.12.0-slim AS builder
+FROM python:3.12.9-slim AS builder
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app
@@ -11,11 +11,13 @@ RUN apt-get update \
 
 # Copy requirements and build wheels so final image doesn't need compilers
 COPY requirements.txt .
-RUN python -m pip install --no-cache-dir pip setuptools wheel \
+RUN python -m pip install --upgrade pip setuptools wheel \
  && pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
 
 # Final runtime image: no build deps, smaller attack surface
-FROM python:3.12.0-slim
+FROM python:3.12.9-slim
+
+ARG DEBIAN_FRONTEND=noninteractive
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app
