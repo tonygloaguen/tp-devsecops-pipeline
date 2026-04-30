@@ -11,7 +11,7 @@ RUN apt-get update \
 
 # Copy requirements and build wheels so final image doesn't need compilers
 COPY requirements.txt .
-RUN python -m pip install --upgrade pip setuptools wheel \
+RUN python -m pip install --no-cache-dir pip setuptools wheel \
  && pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
 
 # Final runtime image: no build deps, smaller attack surface
